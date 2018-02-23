@@ -1,0 +1,19 @@
+{% extends "base_template.html" %}
+
+{% block pageheader %}
+    <h1>Daftar Kontrak</h1>    
+{% endblock pageheader %}
+
+{% block content %}
+    {% if kontrak_list %}
+    	<ul>
+    		{% for kontrak in kontrak_list  %}
+    			<li>
+    				<a href="{{ kontrak.get_absolute_url }}">{{ kontrak.no_kontrak }} {{ kontrak.deskripsi }}</a>
+    			</li>
+    		{% endfor %}
+    	</ul>
+        
+    
+    {% endif %}
+{% endblock content %}

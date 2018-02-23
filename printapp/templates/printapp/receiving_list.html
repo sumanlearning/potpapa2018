@@ -1,0 +1,18 @@
+{% extends "base_template.html" %}
+
+{% block pageheader %}
+    <h1>Daftar Berita Acara</h1>
+{% endblock pageheader %}
+
+{% block content %}
+    {% if receiving_list %}
+        <ul>
+        	{% for receiving in receiving_list  %}
+        		<li>
+        			<a href="{{ receiving.get_absolute_url }}">{{ receiving.termin.kontrak.no_kontrak }} {{ receiving.termin.kontrak.deskripsi }} {{ receiving.termin.nth_termin }}</a>
+        		</li>
+        	{% endfor %}
+        </ul>
+    
+    {% endif %}
+{% endblock content %}

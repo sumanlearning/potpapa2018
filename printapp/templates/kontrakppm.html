@@ -1,0 +1,69 @@
+{% extends "base_template.html" %}
+{% load humanize %}
+
+{% block content %}
+    <h4>{{ kontrak.no_kontrak }} {{ kontrak.deskripsi }}</h4>
+	<hr>
+    <table class="table table-bordered table-striped">
+    	<tr>
+    		<th scope="row">Nama Supplier</th>
+    		<td>{{ kontrak.supplier }}</td>
+    	</tr>
+    	<tr>
+    		<th scope="row">Nilai Pekerjaan</th>
+    		<td>Rp.{{ kontrak.nilai|intcomma }} ({{terbilang_kontrak }} rupiah)</td>
+    	</tr>
+    	<tr>
+    		<th scope="row">Tanggal terbit</th>
+    		<td>{{ kontrak.tgl_terbit }}</td>
+    	</tr>
+    	<tr>
+    		<th scope="row">Tanggal jatuh tempo</th>
+    		<td>{{ kontrak.tgl_due }}</td>
+    	</tr>
+    	{% if kontrak.nhari_har > 0 %}
+    	    <tr>
+    			<th scope="row">Masa Pemeliharaan</th>
+    			<td>{{ kontrak.nhari_har }} hari</td>
+    		</tr>
+    	
+    	{% endif %}     
+    </table>
+  
+    <hr>
+    <h4 class="text-primary">Panitia Pengawas Mutu</h4>
+    <table class="table table-bordered">
+        <tr>
+            <th scope="row">Ketua</th>
+            <td>{{ ppm.ketua }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Sekretaris</th>
+            <td>{{ ppm.sekretaris }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Anggota</th>
+            <td>{{ ppm.anggota }}</td>
+        </tr>
+    </table>
+
+    <hr>
+    <h4 class="text-primary">Termin Pembayaran</h4>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<td>Detail Termin</td>
+				<td>Tanggal Jatuh Tempo</td>
+				<td>Nilai Termin</td>
+			</tr>
+		</thead>
+    	{% for termin in termins %}
+		<tr>
+			<th scope="row">termin ke-{{ termin.nth_termin }}</th>
+			<td>{{ termin.tgl_termin }}</td>
+			<td>Rp.{{ termin.nilai_termin|intcomma }}</td>
+		</tr>
+    	{% endfor %}
+    </table>
+
+{% endblock content %}

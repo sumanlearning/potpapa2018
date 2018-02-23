@@ -1,0 +1,15 @@
+{% extends "base_template.html" %}
+
+{% block pageheader %}
+    <h2>Buat Berita Acara</h2>
+{% endblock pageheader %}
+
+{% block content %}
+    <form action='.' method="post">
+    	{% csrf_token %}
+    	<table>
+    	{{ form.as_table}}
+    	</table>
+    	<input type="submit" name="submit" />
+    </form>
+{% endblock content %}

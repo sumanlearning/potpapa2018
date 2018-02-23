@@ -1,0 +1,63 @@
+{% extends "base_template.html" %}
+{% load humanize %}
+
+{% block pageheader %}
+    <h4>{{ receiving.termin.kontrak.no_kontrak }} {{ receiving.termin.kontrak.deskripsi }}</h4>
+    <h5>Termin ke-{{ receiving.termin.nth_termin }}</h5>
+{% endblock pageheader %}
+
+{% block content %}
+	<h5>Informasi Kontrak</h5>
+	<table class="table table-bordered">
+		<tr>
+			<td>Pelaksana Pekerjaan</td>
+			<td>{{ receiving.termin.kontrak.supplier }}</td>
+		</tr>
+		<tr>
+			<td>Total Nilai Kontrak</td>
+			<td>
+				<p>Rp.{{ receiving.termin.kontrak.nilai|intcomma }}</p>
+				<p>({{ terbilang_nilai_kontrak }} rupiah)</p>
+			</td>
+		</tr>
+	</table>
+	
+	<h5>Informasi Berita Acara</h5>
+    <table class="table table-bordered">
+    	<tr>
+    		<td>Tanggal Pemeriksaan</td>
+    		<td>{{ receiving.tgl_periksa }}</td>
+    	</tr>
+    	<tr>
+    		<td>Berita Acara Pemeriksaan Pekerjaan</td>
+    		<td>
+    			<p>Nomer: {{ receiving.no_bapp }}</p>
+    			<p>Tanggal: {{ receiving.tgl_bapp }}</p>
+    		</td>
+    	</tr>
+    	<tr>
+    		<td>Berita Acara Serah Terima Pekerjaan</td>
+    		<td>
+    			<p>Nomer: {{ receiving.no_bast }}</p>
+    			<p>Tanggal: {{ receiving.tgl_bast }}</p>
+    		</td>
+    	</tr>
+    	<tr>
+    		<td>Nilai Pembayaran</td>
+    		<td>
+    			<p>Rp.{{ receiving.bayar_now|intcomma }}</p>
+    			<p>({{ terbilang_bayar_now }} rupiah)</p>
+    		</td>
+    	</tr>
+	</table>
+
+    <h5>Informasi Keterlambatan</h5>
+    <table class="table table-bordered">
+    	<tr>
+    		<td>Jumlah keterlambatan</td>
+    		<td>{{ receiving.nhari_telat }}
+    			 ({{ terbilang_nhari_telat }}) hari</td>
+    	</tr>
+    </table>
+   
+{% endblock content %}

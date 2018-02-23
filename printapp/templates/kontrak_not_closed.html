@@ -1,0 +1,23 @@
+{% extends "base_template.html" %}
+
+{% block pageheader %}
+    <h2>Pilih Kontrak untuk Berita Acara</h2>
+{% endblock pageheader %}
+
+{% block content %}
+	<table class="table table-bordered table-striped">
+		<th>No kontrak</th>
+		<th>Judul Kontrak</th>
+		<th>Pelaksana Pekerjaan</th>
+    {% for kontrak in kontraks  %}
+    	<a href="#">
+    		<tr>
+    			<td><a href="{% url 'create-bapp' kontrak.id %}"> {{ kontrak.no_kontrak }} </a></td>
+    			<td><a href="#"> {{ kontrak.deskripsi }} </a></td>
+    			<td><a href="#"> {{ kontrak.supplier }} </a></td>
+    		</tr>
+        </a>
+
+    {% endfor %}
+	</table>
+{% endblock content %}

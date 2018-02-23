@@ -1,0 +1,29 @@
+{% extends "base_template.html" %}
+
+{% block pageheader %}
+    <h1>Halaman Index</h1>
+{% endblock pageheader %}
+
+{% block content %}
+    <h3>Jumlah kontrak: {{ jumlah_kontrak }}</h3>
+
+    <h3 class="text-danger">Kontrak Overdue (sudah jatuh tempo): </h3>
+    <ul>
+    {% for termin in termins %}
+    	{% if termin.is_overdue %}
+    	    <li><span class="text-danger"> termin ke-{{ termin.nth_termin }}</span> Due date: {{ termin.tgl_termin }};  {{ termin.kontrak.no_kontrak }} : {{ termin.kontrak.deskripsi }} </li>
+    	
+    	{% endif %}    	
+    {% endfor %}
+	</ul>
+    
+    <h3>Kontrak Akan Jatuh Tempo</h3>
+    {% for termin in termins %}
+    	{% if termin.monitored %}
+    	    <li>{{ termin.tgl_termin }} {{ termin.kontrak.no_kontrak }}</li>
+    	
+    	{% endif %}
+    	
+    {% endfor %}
+    	
+{% endblock content %}

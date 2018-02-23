@@ -1,0 +1,41 @@
+{% extends "base_template.html" %}
+{% load humanize %}
+
+{% block pageheader %}
+    <h4>{{ kontrak.no_kontrak }} {{ kontrak.deskripsi }}</h4>    
+{% endblock pageheader %}
+
+{% block content %}
+    <table class="table table-bordered table-striped">
+    	<tr>
+    		<th scope="row">Nama Supplier</th>
+    		<td>{{ kontrak.supplier }}</td>
+    	</tr>
+    	<tr>
+    		<th scope="row">Nilai Pekerjaan</th>
+    		<td>Rp.{{ kontrak.nilai|intcomma }}</td>
+    	</tr>
+    	<tr>
+    		<th scope="row">Tanggal terbit</th>
+    		<td>{{ kontrak.tgl_terbit }}</td>
+    	</tr>
+    	<tr>
+    		<th scope="row">Tanggal jatuh tempo</th>
+    		<td>{{ kontrak.tgl_due }}</td>
+    	</tr>
+    	{% if kontrak.nhari_har > 0 %}
+    	    <tr>
+    			<th scope="row">Masa Pemeliharaan</th>
+    			<td>{{ kontrak.nhari_har }} hari</td>
+    		</tr>
+    	
+    	{% endif %}     
+    </table>
+    <h5>Panitia Pengawas Mutu</h5>
+    <table>
+        <tr>
+            <th scope="row">Ketua</th>
+            <td>{{ kontrak.ppm.ketua }}</td>
+        </tr>
+    </table>
+{% endblock content %}
