@@ -1,0 +1,6 @@
+Django==2.0.2
+-e git://github.com/AndrewIngram/django-extra-views.git@69c706770938f1b58002f34c6f5bb27684b7ded6#egg=django_extra_views
+Pillow==5.0.0
+pytz==2018.3
+reportlab==3.4.0
+six==1.11.0
